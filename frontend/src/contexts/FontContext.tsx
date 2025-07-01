@@ -141,11 +141,8 @@ export const FontProvider: React.FC<FontProviderProps> = ({ children }) => {
       await loadFont(fontFamily);
       setCurrentFont(fontFamily);
       
-      // Apply font to dashboard content only
-      const dashboardElement = document.querySelector('.analytics-dashboard');
-      if (dashboardElement) {
-        (dashboardElement as HTMLElement).style.fontFamily = `"${fontFamily}", sans-serif`;
-      }
+      // Apply font to entire body (except toolbar which has explicit Helvetica)
+      document.body.style.fontFamily = `"${fontFamily}", sans-serif`;
     } catch (error) {
       console.error('Failed to load font:', error);
     } finally {

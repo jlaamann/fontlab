@@ -5,7 +5,9 @@ import './FontToolbar.css';
 const FontToolbar: React.FC = () => {
   const { currentFont, availableFonts, changeFont, isLoading } = useFont();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   // Close dropdown when clicking outside or pressing Escape
   useEffect(() => {
@@ -32,13 +34,27 @@ const FontToolbar: React.FC = () => {
   const handleFontSelect = (fontFamily: string) => {
     changeFont(fontFamily);
     setIsDropdownOpen(false);
+    setSearchTerm('');
   };
 
   const toggleDropdown = () => {
     if (!isLoading) {
-      setIsDropdownOpen(!isDropdownOpen);
+      const newIsOpen = !isDropdownOpen;
+      setIsDropdownOpen(newIsOpen);
+      if (newIsOpen) {
+        // Focus search input when dropdown opens
+        setTimeout(() => {
+          searchInputRef.current?.focus();
+        }, 100);
+      } else {
+        setSearchTerm('');
+      }
     }
   };
+
+  const filteredFonts = availableFonts.filter(font =>
+    font.name.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const currentFontName = availableFonts.find(font => font.family === currentFont)?.name || currentFont;
 
@@ -63,15 +79,32 @@ const FontToolbar: React.FC = () => {
 
             {isDropdownOpen && (
               <div className="dropdown-menu">
-                {availableFonts.map((font) => (
-                  <div
-                    key={font.family}
-                    className={`dropdown-item ${font.family === currentFont ? 'selected' : ''}`}
-                    onClick={() => handleFontSelect(font.family)}
-                  >
-                    {font.name}
-                  </div>
-                ))}
+                <div className="search-container">
+                  <input
+                    ref={searchInputRef}
+                    type="text"
+                    placeholder="Search fonts..."
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                    className="font-search-input"
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                </div>
+                <div className="dropdown-items-container">
+                  {filteredFonts.length > 0 ? (
+                    filteredFonts.map((font) => (
+                      <div
+                        key={font.family}
+                        className={`dropdown-item ${font.family === currentFont ? 'selected' : ''}`}
+                        onClick={() => handleFontSelect(font.family)}
+                      >
+                        {font.name}
+                      </div>
+                    ))
+                  ) : (
+                    <div className="no-results">No fonts found matching "{searchTerm}"</div>
+                  )}
+                </div>
               </div>
             )}
           </div>
