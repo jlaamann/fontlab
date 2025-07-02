@@ -100,7 +100,7 @@ export const FontProvider: React.FC<FontProviderProps> = ({ children }) => {
   useEffect(() => {
     // Load initial font
     loadFont('Inter');
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loadFont = (fontFamily: string) => {
@@ -129,7 +129,7 @@ export const FontProvider: React.FC<FontProviderProps> = ({ children }) => {
     try {
       await loadFont(fontFamily);
       setCurrentFont(fontFamily);
-      
+
       // Apply font to entire body (except toolbar which has explicit Helvetica)
       document.body.style.fontFamily = `"${fontFamily}", sans-serif`;
     } catch (error) {
