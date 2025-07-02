@@ -1,13 +1,13 @@
-# FontLab Pro - Product Requirements Document
+# Font Canvas - Product Requirements Document
 
 ## Executive Summary
 
-**Product Name**: FontLab Pro  
+**Product Name**: Font Canvas  
 **Tagline**: "The Complete Font Testing Environment"  
 **Product Type**: Web Application  
 **Target Launch**: Q2 2025  
 
-FontLab Pro revolutionizes typography testing by providing designers and developers with interactive UI mockups to evaluate fonts in realistic interface contexts. Unlike existing tools that show isolated text samples, FontLab Pro demonstrates how typography performs across complete digital experiences.
+Font Canvas revolutionizes typography testing by providing designers and developers with interactive UI mockups to evaluate fonts in realistic interface contexts. Unlike existing tools that show isolated text samples, Font Canvas demonstrates how typography performs across complete digital experiences.
 
 ## Problem Statement
 

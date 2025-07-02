@@ -1,6 +1,7 @@
-- [ ] Include more mock up sites
+- [x] Include more mock up sites
   - [x] CMS
-  - [ ] Landing page
-- [ ] Order fonts alphabetically
+  - [x] Landing page
+- [x] Order fonts alphabetically
+- [ ] Design a logo
 - [ ] Save favourite fonts
 - [ ] Branding

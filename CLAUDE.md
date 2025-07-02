@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-FontLab Pro is a web application for comprehensive font testing in realistic UI contexts. The application allows designers and developers to test fonts across complete digital interfaces rather than isolated text samples.
+Font Canvas is a web application for comprehensive font testing in realistic UI contexts. The application allows designers and developers to test fonts across complete digital interfaces rather than isolated text samples.
 
 **Target Stack (per documentation):**
 - Frontend: React 18 with TypeScript, Styled Components, Zustand

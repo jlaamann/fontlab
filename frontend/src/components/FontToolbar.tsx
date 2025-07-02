@@ -63,7 +63,7 @@ const FontToolbar: React.FC = () => {
       <div className="font-toolbar-content">
         <div className="toolbar-title">
           <span className="toolbar-icon">🔤</span>
-          FontLab Pro - Font Tester
+          Font Canvas
         </div>
 
         <div className="font-selector">
