@@ -68,10 +68,13 @@ const FontToolbar: React.FC = () => {
 
         <div className="font-selector">
           <label>Font Family:</label>
-          <div className="custom-dropdown" ref={dropdownRef}>
+          
+          {/* Desktop dropdown */}
+          <div className="custom-dropdown desktop-only" ref={dropdownRef}>
             <div
               className={`dropdown-trigger ${isLoading ? 'disabled' : ''}`}
               onClick={toggleDropdown}
+              onTouchStart={(e) => e.stopPropagation()}
             >
               <span className="selected-font">{currentFontName}</span>
               <span className={`dropdown-arrow ${isDropdownOpen ? 'open' : ''}`}>▼</span>
@@ -108,6 +111,21 @@ const FontToolbar: React.FC = () => {
               </div>
             )}
           </div>
+          
+          {/* Mobile select dropdown */}
+          <select 
+            className="mobile-font-select mobile-only"
+            value={currentFont}
+            onChange={(e) => handleFontSelect(e.target.value)}
+            disabled={isLoading}
+          >
+            {availableFonts.map((font) => (
+              <option key={font.family} value={font.family}>
+                {font.name}
+              </option>
+            ))}
+          </select>
+          
           {isLoading && <span className="loading-indicator">Loading...</span>}
         </div>
       </div>

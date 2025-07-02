@@ -53,7 +53,7 @@
 /* Custom Dropdown Styles */
 .custom-dropdown {
   position: relative;
-  min-width: 280px;
+  min-width: 200px;
   font-family: Helvetica, Arial, sans-serif !important;
 }
 
@@ -80,6 +80,22 @@
   background: #f8fafc;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   transform: translateY(-1px);
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .dropdown-trigger:hover:not(.disabled) {
+    background: white;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    transform: none;
+  }
+  
+  .dropdown-item:hover {
+    background: transparent;
+  }
+  
+  .dropdown-item:active {
+    background: #f8fafc;
+  }
 }
 
 .dropdown-trigger.disabled {
@@ -225,34 +241,113 @@
     padding: 16px;
     height: auto;
     min-height: auto;
+    align-items: flex-start;
   }
   
   .toolbar-title {
     font-size: 14px;
+    align-self: flex-start;
   }
   
   .custom-dropdown {
-    min-width: 240px;
+    min-width: 0;
     width: 100%;
-    max-width: 300px;
+    max-width: 100%;
   }
   
   .font-selector {
     min-width: auto;
-    justify-content: center;
+    justify-content: flex-start;
     width: 100%;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .font-selector label {
+    align-self: flex-start;
   }
   
   .current-font-display {
     min-width: auto;
-    text-align: center;
+    text-align: left;
   }
   
   .dropdown-menu {
     max-height: 350px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    width: auto;
+    margin-top: 4px;
   }
   
   .dropdown-items-container {
     max-height: 270px;
+  }
+  
+  .dropdown-item {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+  
+  .dropdown-trigger {
+    min-height: 44px;
+    padding: 12px 14px;
+    font-size: 16px;
+  }
+  
+  .desktop-only {
+    display: none !important;
+  }
+  
+  .mobile-only {
+    display: block !important;
+  }
+  
+  .mobile-font-select {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    background: white;
+    color: #374151;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+    font-family: Helvetica, Arial, sans-serif !important;
+    min-height: 44px;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 40px;
+  }
+  
+  .mobile-font-select:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+/* Default - Desktop styles */
+.desktop-only {
+  display: block;
+}
+
+.mobile-only {
+  display: none;
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+  .desktop-only {
+    display: block !important;
+  }
+  
+  .mobile-only {
+    display: none !important;
   }
 }
